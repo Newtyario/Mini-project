@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#491b9a,#000);
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .subject-block {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .scale {
+            margin-top: 5px;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .low { background-color: #f44336; color: white; }
+        .mid { background-color: #ff9800; color: white; }
+        .high { background-color: #4CAF50; color: white; }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #5a41be;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #5a41be;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background: #3e9141;
+        }
+    </style>
+</head>
+<!--assuming number of classes as 50 classes-->
+<body>
+    <div class="container">
+        <h2>Check Attendance Percentage</h2>
+
+        <div class="subject-block">
+            <label for="automata">Automata</label>
+            <input type="number" id="automata" min="0" max="50" placeholder="Enter attended classes">
+            <div id="scale-automata" class="scale"></div>
+        </div>
+
+        <div class="subject-block">
+            <label for="ai">Artificial Intelligence</label>
+            <input type="number" id="ai" min="0" max="50" placeholder="Enter attended classes">
+            <div id="scale-ai" class="scale"></div>
+        </div>
+
+        <div class="subject-block">
+            <label for="dbms">DBMS</label>
+            <input type="number" id="dbms" min="0" max="50" placeholder="Enter attended classes">
+            <div id="scale-dbms" class="scale"></div>
+        </div>
+
+        <div class="subject-block">
+            <label for="oop">OOP</label>
+            <input type="number" id="oop" min="0" max="50" placeholder="Enter attended classes">
+            <div id="scale-oop" class="scale"></div>
+        </div>
+
+        <div class="subject-block">
+            <label for="daa">DAA</label>
+            <input type="number" id="daa" min="0" max="50" placeholder="Enter attended classes">
+            <div id="scale-daa" class="scale"></div>
+        </div>
+
+        <button onclick="calculateAttendance()">Check Attendance</button>
+<!--back to dasbboard-->
+        <a href="dashboard.html" class="back-button">Back to Dashboard</a>
+    </div>
+<!--calculate attendance-->
+    <script>
+        function calculateAttendance() {
+            const total = 50;
+            const subjects = ["automata", "ai", "dbms", "oop", "daa"];
+
+            subjects.forEach(sub => {
+                const attended = document.getElementById(sub).value;
+                const scaleDiv = document.getElementById("scale-" + sub);
+                scaleDiv.textContent = "";
+                scaleDiv.className = "scale";
+
+                if (attended === "") return;
+
+                const percent = (attended / total) * 100;
+                if (percent < 65) {
+                    scaleDiv.classList.add("low");
+                    scaleDiv.textContent = `${percent.toFixed(1)}% - Low Attendance`;
+                } else if (percent < 75) {
+                    scaleDiv.classList.add("mid");
+                    scaleDiv.textContent = `${percent.toFixed(1)}% - Medium Attendance`;
+                } else {
+                    scaleDiv.classList.add("high");
+                    scaleDiv.textContent = `${percent.toFixed(1)}% - Good Attendance`;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
