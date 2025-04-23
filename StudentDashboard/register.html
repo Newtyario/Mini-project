@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .register-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .register-container h1 {
+            margin-bottom: 20px;
+            color: #4a4a4a;
+        }
+        .register-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #b0b0b0;
+            font-size: 16px;
+        }
+        .register-btn {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .register-btn:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register</h1>
+        <form action="register.php" method="POST">
+            <input type="text" name="username" class="register-input" placeholder="Username" required>
+            <input type="email" name="email" class="register-input" placeholder="Email" required>
+            <input type="password" name="password" class="register-input" placeholder="Password" required>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>
